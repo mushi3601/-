@@ -1,0 +1,82 @@
+12.31 22:32
+
+<!DOCTYPE  html>
+<html  lang="zh">
+<head>
+     <meta  charset="UTF-8">
+     <meta  name="viewport"  content="width=device-width,  initial-scale=1.0">
+     <title>2024年元旦倒计时</title>
+     <style>
+         body  {
+             font-family:  Arial,  sans-serif;
+              text-align:  center;
+             background-color:  #f0f0f0;
+             margin:  0;
+             padding:  0;
+         }
+
+         .container  {
+             max-width:  600px;
+             margin:  0  auto;
+             padding:  30px;
+             background-color:  #fff;
+             box-shadow:  0  0  10px  rgba(0,  0,  0,  0.1);
+         }
+
+         h1  {
+             font-size:  2em;
+             margin-bottom:  20px;
+         }
+
+         p  {
+             font-size:  1.2em;
+             margin-bottom:  30px;
+         }
+
+         button  {
+             background-color:  #4CAF50;
+             border:  none;
+             color:  white;
+             padding:  15px  32px;
+              text-align:  center;
+              text-decoration:  none;
+             display:  inline-block;
+             font-size:  16px;
+             margin:  4px  2px;
+             cursor:  pointer;
+         }
+
+         button:hover  {
+             background-color:  #45a049;
+         }
+     </style>
+</head>
+<body>
+     <div  class="container">
+         <h1>2024年元旦倒计时</h1>
+         <p>距离2024年1月1日还有：<span  id="countdown">00:00:00</span></p>
+         <button  onclick="resetCountdown()">重置倒计时</button>
+     </div>
+
+     <script>
+         function  resetCountdown()  {
+             const  countdownElement  =  document.getElementById('countdown');
+             const  date  =  new  Date(2024,  0,  1);  //  设置2024年1月1日为基准日期
+             const  now  =  new  Date();  //  获取当前日期
+             const  remainingTime  =  date  -  now;
+
+             if  (remainingTime  <=  0)  {
+                 countdownElement.textContent  =  '00:00:00';
+             }  else  {
+                 const  hours  =  Math.floor(remainingTime  /  (1000  *  60  *  60));
+                 const  minutes  =  Math.floor((remainingTime  %  (1000  *  60  *  60))  /  (1000  *  60));
+                 const  seconds  =  Math.floor((remainingTime  %  (1000  *  60))  /  1000);
+                 countdownElement.textContent  =  (hours  <  10  ?  '0'  +  hours  :  hours)  +  ':'  +  (minutes  <  10  ?  '0'  +  minutes  :  minutes)  +  ':'  +  (seconds  <  10  ?  '0'  +  seconds  :  seconds);
+             }
+         }
+
+         resetCountdown();
+         setInterval(resetCountdown,  1000);
+     </script>
+</body>
+</html>
